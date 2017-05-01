@@ -4,47 +4,42 @@
 ![alt text](http://django-unfriendly.readthedocs.io/en/latest/_static/img/python-logo-256.png "Python")
 # Swift v. Python
 
-## Introduction
-### Swift
-lorum ipsum
-
-### Python
-lorum ipsum
-
-## Basics
-
-### Swift
-
-### Python
-
-## Uses
-
-## Types
-
-## Classes 
-
-## Properties
-
-## Variables
-
-### Declaration
-
-### Strings
-
-### Integers
-
-### Arrays
-
-## Control Flow
-
-### Switch
-
-### If...else
-
-### While
-
-### Conditionals
+## Language Purpose/ Genesis
 
 ## Unique Features
 
-## Conclusion
+## Name Spaces
+
+## Types
+
+## Classes
+
+## Instance Reference
+
+## Properties
+
+## Interfaces/ Protocols
+
+## Reflection
+
+## Memory Management
+
+## Comparison of References and Values
+
+## Null/Nil References
+
+## Errors & Exception Handling
+
+## Lambda Expressions, Closures, Functions as Types
+
+## Implementation of Listeners and Event Handlers
+
+## Singleton 
+
+## Procedural Programming
+
+## Functional Programming
+
+## Multithreading
+
+## Conclusions
