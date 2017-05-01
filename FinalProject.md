@@ -1,9 +1,14 @@
 # Object Oriented Language Comparison
+### By Mark Madden and Miranda Reese
 
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/7/7a/Apple-swift-logo.png "Swift") 
 ![alt text](https://www.iconattitude.com/icons/open_icon_library/apps/png/128/development-python.png "Python")
 
-# Swift v. Python
+# Swift vs. Python
+
+### Swift
+
+### Python
 
 ## Language Purpose/ Genesis
 
