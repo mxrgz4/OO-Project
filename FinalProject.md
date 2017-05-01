@@ -1,7 +1,7 @@
 # Object Oriented Language Comparison
 
-![alt text](https://www.intego.com/mac-security-blog/wp-content/uploads/2016/02/Apple_Swift_logo.png "Swift") 
-![alt text](http://django-unfriendly.readthedocs.io/en/latest/_static/img/python-logo-256.png "Python")
+![alt text](https://upload.wikimedia.org/wikipedia/commons/7/7a/Apple-swift-logo.png "Swift") 
+![alt text](http://cs.lmu.edu/~ray/images/python-logo.png "Python")
 # Swift v. Python
 
 ## Language Purpose/ Genesis
