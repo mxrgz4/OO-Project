@@ -1,6 +1,6 @@
 # Object Oriented Language Comparison
 # Swift v. Python
-![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Swift_logo.svg/2000px-Swift_logo.svg.png "Swift" =200x200)
+![alt text](http://www.techjini.com/wp-content/uploads/2016/11/swift-logo-E9182990F5-seeklogo.com_.png "Swift")
 ![alt text](https://www.python.org/static/opengraph-icon-200x200.png "Python")
 
 
