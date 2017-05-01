@@ -1,6 +1,6 @@
 # Object Oriented Language Comparison
 ![alt text](http://www.techjini.com/wp-content/uploads/2016/11/swift-logo-E9182990F5-seeklogo.com_.png "Swift") 
-![alt text](http://django-unfriendly.readthedocs.io/en/latest/_static/img/python-logo-256.png"Python")
+![alt text](http://django-unfriendly.readthedocs.io/en/latest/_static/img/python-logo-256.png "Python")
 # Swift v. Python
 
 ## Introduction
