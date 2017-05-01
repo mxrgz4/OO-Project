@@ -1,7 +1,7 @@
 # OO-Project
 ## Languges Python and Swift
-##Swift
+## Swift
 lorum ipsum
 
-##Python
+## Python
 lorum ipsum
