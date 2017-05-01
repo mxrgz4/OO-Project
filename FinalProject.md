@@ -1,7 +1,6 @@
 # Object Oriented Language Comparison
 
-![alt text](https://upload.wikimedia.org/wikipedia/commons/7/7a/Apple-swift-logo.png "Swift") 
-
+![alt text](https://upload.wikimedia.org/wikipedia/commons/7/7a/Apple-swift-logo.png "Swift")       
 ![alt text](https://www.iconattitude.com/icons/open_icon_library/apps/png/128/development-python.png "Python")
 # Swift v. Python
 
