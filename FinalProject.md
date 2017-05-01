@@ -1,4 +1,9 @@
-# Object Oriented Language Comparison - Swift v. Python
+# Object Oriented Language Comparison
+# Swift v. Python
+![alt text](https://blog.liip.ch/content/uploads/2016/09/windex.png "Swift")
+![alt text](http://www.pngall.com/python-logo-png "Python")
+
+
 ## Introduction
 ### Swift
 lorum ipsum
@@ -7,6 +12,10 @@ lorum ipsum
 lorum ipsum
 
 ## Basics
+
+### Swift
+
+### Python
 
 ## Uses
 
@@ -38,4 +47,4 @@ lorum ipsum
 
 ## Unique Features
 
-
+## Conclusion
