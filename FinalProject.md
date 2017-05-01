@@ -7,6 +7,10 @@
 
 ## Language Purpose/ Genesis
 
+### Python 
+
+Python is a high level programming language for general use programming. Python was created by Guido Van Rossum in 1991. Python has a philosophy to emphasize code readability. Python uses white spaces and code blocks rather than keywords and curly braces. This results in fewer lines of code. The language provides constructs intended to enable writing clear programs on both a small and large scale. 
+
 ## Unique Features
 
 ## Name Spaces
