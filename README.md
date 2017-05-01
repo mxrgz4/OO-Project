@@ -1,2 +1,7 @@
 # OO-Project
-## Languges Python and Ruby
+## Languges Python and Swift
+##Swift
+lorum ipsum
+
+##Python
+lorum ipsum
