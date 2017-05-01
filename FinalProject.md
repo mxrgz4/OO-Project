@@ -1,8 +1,7 @@
 # Object Oriented Language Comparison
+![alt text](http://www.techjini.com/wp-content/uploads/2016/11/swift-logo-E9182990F5-seeklogo.com_.png "Swift") 
+![alt text](http://www.theallium.com/wp-content/uploads/2013/12/python-logo-glassy-286x330.png "Python")
 # Swift v. Python
-![alt text](http://www.techjini.com/wp-content/uploads/2016/11/swift-logo-E9182990F5-seeklogo.com_.png "Swift")
-![alt text](https://www.python.org/static/opengraph-icon-200x200.png "Python")
-
 
 ## Introduction
 ### Swift
