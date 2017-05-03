@@ -131,6 +131,8 @@ x = SampleClass('foo',18)
 
 ### Python 
 
+Python automatically manages memory within a private heap containing all python objects and data structures. The memory manager managers the private heap with different modules of the manager handling different types. The management of the private heap is ensured internally by the memory manager. At the lowest level a raw memory allocator ensures there is enough room in the private heap for all the data by interacting with the memory manager of the OS. The management of the python heap is performed by the interpreter itself and the user has no control over it.
+
 ## Comparison of References and Values
 
 ### Swift
@@ -165,7 +167,28 @@ x = SampleClass('foo',18)
 
 ### Swift
 
-### Python 
+### Python
+
+There are multiple ways to implement a singleton in Python. You can use a decorator, a base class, a metaclass or a decorator returning a class with the same name. 
+
+Here is an example of a singleton method created with a meta class
+
+```python 
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+#Python2
+class MyClass(BaseClass):
+    __metaclass__ = Singleton
+
+#Python3
+class MyClass(BaseClass, metaclass=Singleton):
+    pass
+```
 
 ## Procedural Programming
 
@@ -173,17 +196,54 @@ x = SampleClass('foo',18)
 
 ### Python 
 
+Procedural programming is supported. Tasks are treated as a step by step iteration where tasks are placed in functions that are called as needed. This style favors iteration, sequencing, selection and modularization. The procedure style relies on procedure calls to create modularized code. 
+
+
+
+
+
 ## Functional Programming
 
 ### Swift
 
-### Python 
+### Python
+
+Python supports functional programming. Every statement is treated as a mathematical equation and any form of state or mutable data is avoided. This coding style lends itself well to parallel processing because there is no state to consider. 
+
+```python
+import functools
+MyList = [1, 2, 3, 4, 5]
+def AddIt(X, Y):
+    return (X + Y)
+Sum = functools.reduce(AddIt, MyList)
+print(Sum)
+```
+
 
 ## Multithreading
 
 ### Swift
 
 ### Python 
+
+The thread class represents an activity that is run in a separate thread of control. There are two ways to specify the activity by passing an object to the constructor or by overriding the run()  method in a subclass. Once a thread is started, the thread is considered alive. It stops being alive when its run() method is terminated. There is a “main thread” object this corresponds to the initial thread control in the python program. Each thread instance has a name. 
+
+The simplest way to use a thread is to instantiate it with a target function and call start().
+
+```python
+import threading
+
+def worker():
+    """thread worker function"""
+    print 'Worker'
+    return
+
+threads = []
+for i in range(5):
+    t = threading.Thread(target=worker)
+    threads.append(t)
+    t.start()
+```
 
 ## Conclusions
 
