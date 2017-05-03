@@ -82,6 +82,22 @@ To instantiate a class.
 x = SampleClass()     
 ```
 
+In python there are no access modifiers. To construct an object with arguments you have to define an _init_ method in the class.
+
+```python
+Class SampleClass
+	Def __init__ (self, var1, var2)
+		Self.var1 = var1
+
+		Self.var2 = var2
+```
+    
+
+
+
+```python
+x = SampleClass('foo',18)
+```
 
 
 
