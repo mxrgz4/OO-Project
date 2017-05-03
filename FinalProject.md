@@ -27,9 +27,8 @@ Python uses white spaces and code blocks rather than keywords and curly braces. 
 
 
 ```javascript
-something
- { \something1 
- 
+something{ 
+    something1 
     something2 
 } something3
 ```
@@ -52,17 +51,39 @@ Something3`
 
 ### Python 
 
+Python implements most namespaces. Namespaces in python have had many lifetimes because they are created at different times. The namespace containing Python’s built in names is created when the interpreter starts up. Namespaces read from a script file are called _main_ and have their own global namespace. 
+
+
+
 ## Types
 
 ### Swift
 
 ### Python 
 
+The type system in Python is dynamic. Which means you do not need to declare a type when you are declaring a variable. Python supports,  booleans, integers, longs, floats, complex numbers, strings, bytes, byte arrays, lists, tuples, sets, and dictionaries. Numeric types, strings, tuples and sets are immutable. 
+
+
 ## Classes
 
 ### Swift
 
 ### Python 
+
+Declaring a class in python is very simple and python does not have access modifiers. 
+
+```python
+class SampleClass     
+```
+
+To instantiate a class. 
+
+```python
+x = SampleClass()     
+```
+
+
+
 
 ## Instance Reference
 
