@@ -180,6 +180,8 @@ Python automatically manages memory within a private heap containing all python 
 
 ### Python 
 
+Python uses the ‘none’ for null values. None is an instantiated singleton object. There is no null pointer exception in Python 
+
 ## Errors & Exception Handling
 
 ### Swift
@@ -197,6 +199,48 @@ Python automatically manages memory within a private heap containing all python 
 ### Swift
 
 ### Python 
+
+Python does not have a native event listener. A programmer can import pre made libraries or make event listeners themselves. One example of the event listener is a library called EventHook. 
+
+```Python
+class MyBroadcaster()
+    def __init__():
+        self.onChange = EventHook()
+
+theBroadcaster = MyBroadcaster()
+
+# add a listener to the event
+theBroadcaster.onChange += myFunction
+
+# remove listener from the event
+theBroadcaster.onChange -= myFunction
+
+# fire event
+theBroadcaster.onChange.fire()
+
+
+class EventHook(object):
+
+    def __init__(self):
+        self.__handlers = []
+
+    def __iadd__(self, handler):
+        self.__handlers.append(handler)
+        return self
+
+    def __isub__(self, handler):
+        self.__handlers.remove(handler)
+        return self
+
+    def fire(self, *args, **keywargs):
+        for handler in self.__handlers:
+            handler(*args, **keywargs)
+
+    def clearObjectHandlers(self, inObject):
+        for theHandler in self.__handlers:
+            if theHandler.im_self == inObject:
+                self -= theHandler
+```	
 
 ## Singleton 
 
