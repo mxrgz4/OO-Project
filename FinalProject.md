@@ -43,7 +43,6 @@ Something3`
 
 ### Swift
 
-### Python 
 
 ## Name Spaces
 
