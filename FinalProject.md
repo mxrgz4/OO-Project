@@ -162,7 +162,7 @@ MyIterable.register(Foo)
 
 Because Python is a dynamic type language, it does not actually have reflection. It actually has something called Object introspection. Introspection is the ability to determine the type of object at runtime. Python ships with a few functions and modules to determine an object. 
 
-Dir
+####Dir
 Dir returns a list of attributes and methods belonging to an object.
 
 ```python 
@@ -178,11 +178,10 @@ dir(my_list)
 # 'remove', 'reverse', 'sort']
 ```
 
-		
-type 
+####Type
 Type returns the type of object. 
 
-Inspect
+####Inspect
 The inspect module provides useful functions to get information about live objects. 
 
 
