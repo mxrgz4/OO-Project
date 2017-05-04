@@ -173,6 +173,16 @@ Python automatically manages memory within a private heap containing all python 
 ### Swift
 
 ### Python 
+Python variables are compared by value by using the == operator. To compare variables by reference by using the ‘is’ command. 
+
+```python
+	x = 5
+	y = 5
+	x == y #compares by value
+	x is y #compares by reference
+```
+	
+
 
 ## Null/Nil References
 
@@ -277,10 +287,17 @@ class MyClass(BaseClass, metaclass=Singleton):
 
 Procedural programming is supported. Tasks are treated as a step by step iteration where tasks are placed in functions that are called as needed. This style favors iteration, sequencing, selection and modularization. The procedure style relies on procedure calls to create modularized code. 
 
+```python
+def DoAdd(MyList):
+    Sum = 0
+    if type(MyList) is list:
+        for X in MyList:
+            Sum += X
+    return Sum
+MyList = [1, 2, 3, 4, 5]
+print(DoAdd(MyList))
 
-
-
-
+```
 ## Functional Programming
 
 ### Swift
