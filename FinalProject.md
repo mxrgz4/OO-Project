@@ -160,6 +160,32 @@ MyIterable.register(Foo)
 
 ### Python 
 
+Because Python is a dynamic type language, it does not actually have reflection. It actually has something called Object introspection. Introspection is the ability to determine the type of object at runtime. Python ships with a few functions and modules to determine an object. 
+
+Dir
+Dir returns a list of attributes and methods belonging to an object.
+
+```python 
+my_list = [1, 2, 3]
+dir(my_list)
+# Output: ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__',
+# '__delslice__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__',
+# '__getitem__', '__getslice__', '__gt__', '__hash__', '__iadd__', '__imul__',
+# '__init__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__',
+# '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__',
+# '__setattr__', '__setitem__', '__setslice__', '__sizeof__', '__str__',
+# '__subclasshook__', 'append', 'count', 'extend', 'index', 'insert', 'pop',
+# 'remove', 'reverse', 'sort']
+```
+
+		
+type 
+Type returns the type of object. 
+
+Inspect
+The inspect module provides useful functions to get information about live objects. 
+
+
 ## Memory Management
 
 ### Swift
