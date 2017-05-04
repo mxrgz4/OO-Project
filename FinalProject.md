@@ -173,7 +173,7 @@ Python automatically manages memory within a private heap containing all python 
 ### Swift
 
 ### Python 
-Python variables are compared by value by using the == operator. To compare variables by reference by using the ‘is’ command. 
+Python variables are compared by value by using the == operator. To compare variables by reference use the ‘is’ command. 
 
 ```python
 	x = 5
