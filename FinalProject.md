@@ -238,6 +238,24 @@ The try ... except statement has an optional else clause, which, when present, m
 
 ### Python 
 
+Small anonymous functions can be created using the lambda keyword. Lambda functions can be used wherever function objects are required. They are syntactically restricted to a single expression. Lambda functions can reference variables from the containing scope. 
+
+```python
+>>> def make_incrementor(n):
+...     return lambda x: x + n
+...
+>>> f = make_incrementor(42)
+>>> f(0)
+42
+>>> f(1)
+43
+```
+
+A Closure is a function object that remembers values in enclosing scopes even if they are not present in memory. Let us get to it step by step
+
+Firstly, a Nested Function is a function defined inside another function. At least in python, they are only readonly. However, one can use the "nonlocal" keyword explicitly with these variables in order to modify them.
+
+
 ## Implementation of Listeners and Event Handlers
 
 ### Swift
