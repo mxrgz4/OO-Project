@@ -111,6 +111,7 @@ x = SampleClass('foo',18)
 ### Swift
 
 ### Python 
+Python does not have access modifiers, so it would not be a good idea to use getters or setters. To access a class member use the ‘.’ operator.
 
 ## Interfaces/ Protocols
 
