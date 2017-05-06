@@ -380,3 +380,5 @@ for i in range(5):
 ### Swift
 
 ### Python 
+
+Python is a high level programming language for general use programming. Python was created by Guido Van Rossum in 1991. Python has a philosophy to emphasize code readability. Python uses white spaces and code blocks rather than keywords and curly braces. Python has many practical uses to it and it is very versitile.
