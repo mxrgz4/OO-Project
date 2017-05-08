@@ -6,19 +6,28 @@
 
 # Swift vs. Python
 
-### Swift
-
-### Python
-
 ## Language Purpose/ Genesis
 
 ### Swift
+
+Swift is a multi-paradigm programming language developed by Apple for iOS, macOS, watchOS, tvOS, and Linux systems. It works with Apple's extant programs such as Cocoa and Cocoa Touch Frameworks and Objective-C, the predecessor to Swift. Swift is considered safer, with more error checking and concise coding. It was first introduced in 2014 at Apple's Worldwide Developers Conference, with Swift 2 being revealed at the 2015 conference, and Swift 3 in 2016. In 2017, Swift was named one of the top ten programming languages in the monthly TIOBE rankings. 
 
 ### Python 
 
 Python is a high level programming language for general use programming. Python was created by Guido Van Rossum in 1991. Python has a philosophy to emphasize code readability. Python uses white spaces and code blocks rather than keywords and curly braces. This results in fewer lines of code. The language provides constructs intended to enable writing clear programs on both a small and large scale. 
 
 ## Unique Features
+
+### Swift
+Though it is an alternative to Objective-C, Swift shares some similar syntax. Swift does not utilize pointers, as this would typically lead to many errors if handled incorrectly. The core data framework was introduced in Swift 3, as a quicker way to manage data by utilizing NSManaged Objects. Swift's editing board is primarily designed for creating iOS application and offers a unique mapping view to easily visualize a project. It allows buttons, labels, text fields, and more to be linked directly into code through IB Outlets and IB Actions. Swift also utilizes delegates, giving a chain of responsibility typically to higher classes, or in the iOS apps, usually a ViewController, a.k.a. the main screen. A smaller feature with coding is that Swift doesn't use semi-colons to end a line.
+
+```swift
+ @IBOutlet weak var taskTextField: UITextField!
+ //example of an IBOutlet connected to a text field
+ 
+ @IBAction func buttonTapped(_ sender: UIButton)
+ //example of an IBAction connected to the push of a button
+```
 
 ### Python
 
@@ -39,11 +48,6 @@ Something
    something2 
 Something3`
 ```
-
-
-### Swift
-
-
 ## Name Spaces
 
 ### Swift
