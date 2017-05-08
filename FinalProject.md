@@ -29,7 +29,6 @@ Though it is an alternative to Objective-C, Swift shares some similar syntax. Sw
 ```
 Swift also utilizes delegates, giving a chain of responsibility typically to higher classes, or in the iOS apps, usually a ViewController, a.k.a. the main screen. A smaller feature with coding is that Swift doesn't use semi-colons to end a line. Swift also has a unique feature in optionals, or allowing a reference or value to be nil. This explained more in detail later.
 
-
 ### Python
 
 Python uses white spaces and code blocks rather than keywords and curly braces. Whitespace is used to denote blocks. In other languages curly braces are common. When you indent it becomes a child of the previous line. In addition to the indentation, the parent also has a colon following it. A line does not end with a semicolon ,which results in fewer lines of code.  Python does have many other unique features to it like the interactive interpreter, descriptors, yield, and the use of generators and coroutines. 
@@ -139,7 +138,7 @@ let classInstance = Instance()
 
 ### Swift
 
-Properties associate values with a particular class, structure, or enumeration. Stored properties store constant and variable values as part of an instance, whereas computed properties calculate a value directly. Computed properties come from classes, structures, and enumerations. Stored properties are from only by classes and structures. Swift also has lazy properties, which are not calculated until the first time it is used. There are also type properties, which are associated with instances of a particular type.
+Properties associate values with a particular class, structure, or enumeration. Stored properties store constant and variable values as part of an instance, whereas computed properties calculate a value directly. Computed properties come from classes, structures, and enumerations. Stored properties are from only by classes and structures.  There are also type properties, which are associated with instances of a particular type.
 
 ```swift
 struct Rect {
@@ -169,7 +168,10 @@ var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)
 // the range represents integer values 0, 1, and 2
 rangeOfThreeItems.firstValue = 6
 //example of stored properties
+```
 
+Swift also has lazy properties, which are not calculated until the first time it is used.
+```swift
 class DataManager {
     lazy var importer = DataImporter()
     var data = [String]()
@@ -185,19 +187,23 @@ Python does not have access modifiers, so it would not be a good idea to use get
 ## Interfaces/ Protocols
 
 ### Swift
-A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. It can be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. A protocol is defined similarly to a class or struct with curly braces. Multiple protocols can be listed, and are separated by comma. If a class has a superclass, list the superclass name before any protocols it adopts, followed by a comma.
-
+A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. It can be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. A protocol is defined similarly to a class or struct with curly braces. 
 ```swift
 protocol SomeProtocol {
     // protocol definition goes here
 }
 //basic protocol definition
+```
+Multiple protocols can be listed, and are separated by comma.
+```swift
 
 struct SomeStructure: FirstProtocol, AnotherProtocol {
     // structure definition goes here
 }
 //multiple protocol definition
-
+```
+ If a class has a superclass, list the superclass name before any protocols it adopts, followed by a comma.
+```swift
 class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
     // class definition goes here
 }
@@ -241,15 +247,46 @@ class MyIterable:
 MyIterable.register(Foo)
 ```
 
-
 ## Reflection
 
 ### Swift
+Swift's reflection capabilities are based around a struct called Mirror. You create a mirror for a particular subject and the mirror will then let you query it. To create a mirror, you use the reflecting initializer.
+```swift
+public init(reflecting subject: Any)
+
+let aMirror = Mirror(reflecting: aClass)
+```
+The mirror has a few types to determine the information to query. There is a display enum for each type.
+```swift
+public enum DisplayStyle {
+    case Struct
+    case Class
+    case Enum
+    case Tuple
+    case Optional
+    case Collection
+    case Dictionary
+    case Set
+}
+```
+And there is an ancestor representation enum.
+```swift
+public enum AncestorRepresentation {
+    /// Generate a default mirror for all ancestor classes.  This is the
+    /// default behavior.
+    case Generated
+    /// Use the nearest ancestor's implementation of `customMirror()` to
+    /// create a mirror for that ancestor.      
+    case Customized(() -> Mirror)
+    /// Suppress the representation of all ancestor classes.  The
+    /// resulting `Mirror`'s `superclassMirror()` is `nil`.
+    case Suppressed
+}
+```
 
 ### Python 
 
 Because Python is a dynamic type language, it does not actually have reflection. It actually has something called Object introspection. Introspection is the ability to determine the type of object at runtime. Python ships with a few functions and modules to determine an object. 
-
 
 Dir returns a list of attributes and methods belonging to an object.
 
@@ -270,10 +307,49 @@ Type returns the type of object.
 
 The inspect module provides useful functions to get information about live objects. 
 
-
 ## Memory Management
 
 ### Swift
+Swift utilizes the Automatic Reference Counting technology for some aspects of memory management. ARC automatically frees up the memory used by class instances when those instances are no longer needed. When a new instance of a class is created, the ARC allocates a chunk of memory to store information about that instance. The memory holds all the information about that instance, including properties and variables. When the instance is no londer needed the ARC automatically frees up the memory so that it can be utilized somewhere else. It is important to note that the ARC may cause a program to crash if it deallocates memory while the instance is still in use. As a preventative measure, the ARC tracks how many properties, constants, and variables are currently referring to each class instance. ARC will not deallocate an instance as long as at least one active reference to that instance still exists.
+Here is a simple class being created:
+```swift
+class Person {
+    let name: String
+    init(name: String) {
+        self.name = name
+        print("\(name) is being initialized")
+    }
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}
+```
+Now we can assign references to a person, along with variables.
+```swift
+var reference1: Person?
+var reference2: Person?
+var reference3: Person?
+
+reference1 = Person(name: "John Doe")
+// Prints "John Doe is being initialized"
+```
+Because the new Person instance has been assigned to the reference1 variable, there is now a strong reference from reference1 to the new Person instance. Because there is at least one strong reference, ARC makes sure that this Person is kept in memory and is not deallocated.
+```swift
+reference2 = reference1
+reference3 = reference1
+```
+If we continue to assign reference2 and reference3 to reference1, this creates an even stronger reference to ensure the ARC will not deinitialize Person.
+
+```swift
+reference1 = nil
+reference2 = nil
+```
+Now, even though the original reference has been broken, there is still a single reference to Person with reference3 due to it not being completely broken. Once we write:
+```swift
+reference3 = nil
+// Prints "John Doe is being deinitialized"
+```
+The program now sees Person is no longer used at all, and deinitializes it.
 
 ### Python 
 
@@ -282,6 +358,24 @@ Python automatically manages memory within a private heap containing all python 
 ## Comparison of References and Values
 
 ### Swift
+Types in Swift have two categories. Value types are where each instance keeps a unique copy of its data, usually defined as a struct, enum, or tuple. 
+```swift
+// Value type example
+struct S { var data: Int = -1 }
+var a = S()
+var b = a						// a is copied to b
+a.data = 42						// Changes a, not b
+println("\(a.data), \(b.data)")	// prints "42, -1"
+```
+The second are reference types, where instances share a single copy of the data, and the type is usually defined as a class.
+```swift
+// Reference type example
+class C { var data: Int = -1 }
+var x = C()
+var y = x						// x is copied to y
+x.data = 42						// changes the instance referred to by x (and y)
+println("\(x.data), \(y.data)")	// prints "42, 42"
+```
 
 ### Python 
 Python variables are compared by value by using the == operator. To compare variables by reference use the ‘is’ command. 
@@ -297,15 +391,16 @@ Python variables are compared by value by using the == operator. To compare vari
 
 ### Swift
 
-As stated before, Swift allows a unique way to handle null/nil references via something called optionals. To access a value that is optional, the programmer must unwrap it with an exclamation mark(!) first. There is also optional chaining to test if something is nil, and only unwrap it if it isn't. This is done with a question mark (?).
+As stated before, Swift allows a unique way to handle null/nil references via something called optionals. To access a value that is optional, the programmer must unwrap it with an exclamation mark(!) first.
 
 ```swift
   let myValue = anOptionalInstance!.someMethod()
   //the ! operator unwraps anOptionalInstance to expose the instance inside, allowing the method call to be made on it
-  
+```
+There is also optional chaining to test if something is nil, and only unwrap it if it isn't. This is done with a question mark (?).
+```swift
   let myValue = anOptionalInstance?.someMethod()
   //the runtime only calls someMethod if anOptionalInstance is not nil
- 
 ```
 
 ### Python 
@@ -315,7 +410,7 @@ Python uses the ‘none’ for null values. None is an instantiated singleton ob
 ## Errors & Exception Handling
 
 ### Swift
-Swift has features that enable throwing, catching, propagating, and manipulating recoverable errors at runtime. Optionals and optional chaining are important features to utilize to find nil values before running it through a method. Errors are represented by values of types that conform to the Error protocol. Enums are often used to make cases for certain types of errors. It's easy to throw an error back, however, there usually needs to be some code written around it to deal with the problem. There are four ways to handle errors in Swift: propagate the error from a function to the code that calls that function, handle the error using a do-catch statement, handle the error as an optional value, or assert that the error will not occur. Swift does have try...catch elements, where if an error is thrown by the code in the do clause, it is matched against the catch clauses to determine which one of them can handle the error.
+Swift has features that enable throwing, catching, propagating, and manipulating recoverable errors at runtime. Optionals and optional chaining are important features to utilize to find nil values before running it through a method. Errors are represented by values of types that conform to the Error protocol. Enums are often used to make cases for certain types of errors. It's easy to throw an error back, however, there usually needs to be some code written around it to deal with the problem. There are four ways to handle errors in Swift: propagate the error from a function to the code that calls that function, handle the error using a do-catch statement, handle the error as an optional value, or assert that the error will not occur. 
 
 ```swift
 enum VendingMachineError: Error {
@@ -326,6 +421,9 @@ enum VendingMachineError: Error {
 
 throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
 //error is throwing the integer 5 back to the error
+```
+Swift does have try...catch elements, where if an error is thrown by the code in the do clause, it is matched against the catch clauses to determine which one of them can handle the error.
+```swift
 
 do {
     try buyFavoriteSnack(person: "Alice", vendingMachine: vendingMachine)
@@ -384,6 +482,26 @@ Firstly, a Nested Function is a function defined inside another function. At lea
 ## Implementation of Listeners and Event Handlers
 
 ### Swift
+Swift has event handlers much like Objective-C. The Event class has a generic parameter T which defines the type of data that this event conveys and the EventHandler typealias declares a function that accepts this type. You can pass in multiple parameters to events as tuples.
+
+```swift
+class Event<T> {
+
+  typealias EventHandler = T -> ()
+
+  private var eventHandlers = [EventHandler]()
+
+  func addHandler(handler: EventHandler) {
+    eventHandlers.append(handler)
+  }
+
+  func raise(data: T) {
+    for handler in eventHandlers {
+      handler(data)
+    }
+  }
+}
+```
 
 ### Python 
 
@@ -433,6 +551,21 @@ class EventHook(object):
 
 ### Swift
 
+Singletons were typically abused in Objective-C as global varbiales, but were still carried over into Swift, just implemented differently. Singleton patterns are pretty simple too.
+```swift
+// Shared URL Session
+let sharedURLSession = URLSession.shared
+
+// Default File Manager
+let defaultFileManager = FileManager.default
+```
+A singletone allows you to create only one instance of a class, but that instance becomes a global variable, which can lead to problems if not handled correctly. You can access the variable within the AppDelegate of the class as well, which honestly, saves time and convenience. Global variables are initialized lazily, so they aren't run until they need to be. Swift also has static properties, which can be an easier and more elegant alternative to global variables.
+```swift
+class example {
+    static let sharedInstance = example()
+}
+```
+
 ### Python
 
 There are multiple ways to implement a singleton in Python. You can use a decorator, a base class, a metaclass or a decorator returning a class with the same name. 
@@ -459,6 +592,38 @@ class MyClass(BaseClass, metaclass=Singleton):
 ## Procedural Programming
 
 ### Swift
+Swift does support procedural programming, which can be demonstrated within a playground. Here, taking in an array of names, is a function that can sort through them all in a procedure and return the new order.  The logic of sorting rides by name has been captured in a single, testable modular and reusable function.
+
+```swift
+func sortedNames(rides: [Ride]) -> [String] {
+  var sortedRides = rides
+  var i, j : Int
+  var key: Ride
+
+  // 1
+  for (i = 0; i < sortedRides.count; i++) {
+    key = sortedRides[i]
+
+    // 2
+    for (j = i; j > -1; j--) {
+      if key.name.localizedCompare(sortedRides[j].name) == .OrderedAscending {
+        sortedRides.removeAtIndex(j + 1)
+        sortedRides.insert(key, atIndex: j)
+      }
+    }
+  }
+
+  // 3
+  var sortedNames = [String]()
+  for ride in sortedRides {
+    sortedNames.append(ride.name)
+  }
+
+  print(sortedRides)
+
+  return sortedNames
+}
+```
 
 ### Python 
 
@@ -478,6 +643,7 @@ print(DoAdd(MyList))
 ## Functional Programming
 
 ### Swift
+Swift is not a functional language, but does allow functional programming. It offers immutability for certain variables with the "let" functionality. This may seem contradictory with changing an unchagneable object, but Swift offers something different with functional programming. When tossed into a function, rather than mutating the object, a new object with the desired changes is returned. With Swift, there is a way to design the class so as to declare a constant stored property. The method would then produce new instance that stored the new state.
 
 ### Python
 
@@ -492,10 +658,11 @@ Sum = functools.reduce(AddIt, MyList)
 print(Sum)
 ```
 
-
 ## Multithreading
 
 ### Swift
+Swift uses the Grand Central Dispatch (GCD), a low-level API for managing concurrent operations, for multip-threading. In Swift 3, GCD was updated from a more C-based API to an API that included new classes and new data structures. Threads are usually handled independently. Single-core devices can achieve concurrency through time-slicing. They would run one thread, perform a context switch, then run another thread. Multi-core devices can handle multiple threads due to parallelism. There are also dispatch queues that handle multiple tasks in a FIFO manner. There are three different types of queues: main, global, and custom. When you set up queues, instead of giving a priority system, you assign one of four wuality of service classes. User-interactive which represent the tasks that need to be done immediately in order to provide a nice user experience such as UI updates, event handling and small workloads that require low latency. This should run on the main thread and the overall workload kept small. Tasks that are initiated from the UI and can be performed asynchronously are user-initiated. It should be utilized user is waiting for immediate results, and for tasks required to continue user interaction.
+Utility are long-running tasks, typically with a user-visible progress indicator used for computations, I/O, networking, continous data feeds and similar tasks. This class is designed to be energy efficient and will get mapped into the low priority global queue. Lastly, background QoS are tasks that the user is not directly aware of such as prefetching, maintenance, and other tasks that don’t require user interaction and aren’t time-sensitive. This will get mapped into the background priority global queue.
 
 ### Python 
 
