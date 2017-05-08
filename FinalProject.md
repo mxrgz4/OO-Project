@@ -19,7 +19,7 @@ Python is a high level programming language for general use programming. Python 
 ## Unique Features
 
 ### Swift
-Though it is an alternative to Objective-C, Swift shares some similar syntax. Swift does not utilize pointers, as this would typically lead to many errors if handled incorrectly. The core data framework was introduced in Swift 3, as a quicker way to manage data by utilizing NSManaged Objects. Swift's editing board is primarily designed for creating iOS application and offers a unique mapping view to easily visualize a project. It allows buttons, labels, text fields, and more to be linked directly into code through IB Outlets and IB Actions. 
+Though it is an alternative to Objective-C, Swift shares some similar syntax. Swift does not utilize pointers, as this would typically lead to many errors if handled incorrectly. The core data framework was introduced in Swift 3, as a quicker way to manage data by utilizing NSManaged Objects. Swift works well when used with XCode, also Apple's program, an editing board that is primarily designed for creating iOS applications and offers a unique mapping view to easily visualize a project. It allows buttons, labels, text fields, and more to be linked directly into code through IB Outlets and IB Actions. 
 ```swift
  @IBOutlet weak var taskTextField: UITextField!
  //example of an IBOutlet connected to a text field
@@ -27,16 +27,7 @@ Though it is an alternative to Objective-C, Swift shares some similar syntax. Sw
  @IBAction func buttonTapped(_ sender: UIButton)
  //example of an IBAction connected to the push of a button
 ```
-Swift also utilizes delegates, giving a chain of responsibility typically to higher classes, or in the iOS apps, usually a ViewController, a.k.a. the main screen. A smaller feature with coding is that Swift doesn't use semi-colons to end a line. Swift also has a unique feature in optionals, or allowing a reference or value to be nil. To access a value that is optional, the programmer must unwrap it with an exclamation mark(!) first. There is also optional chaining to test if something is nil, and only unwrap it if it isn't. This is done with a question mark (?).
-
-```swift
-  let myValue = anOptionalInstance!.someMethod()
-  //the ! operator unwraps anOptionalInstance to expose the instance inside, allowing the method call to be made on it
-  
-  let myValue = anOptionalInstance?.someMethod()
-  //the runtime only calls someMethod if anOptionalInstance is not nil
- 
-```
+Swift also utilizes delegates, giving a chain of responsibility typically to higher classes, or in the iOS apps, usually a ViewController, a.k.a. the main screen. A smaller feature with coding is that Swift doesn't use semi-colons to end a line. Swift also has a unique feature in optionals, or allowing a reference or value to be nil. This explained more in detail later.
 
 
 ### Python
@@ -127,9 +118,6 @@ Class SampleClass
 
 		Self.var2 = var2
 ```
-    
-
-
 
 ```python
 x = SampleClass('foo',18)
@@ -197,6 +185,24 @@ Python does not have access modifiers, so it would not be a good idea to use get
 ## Interfaces/ Protocols
 
 ### Swift
+A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. It can be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol. A protocol is defined similarly to a class or struct with curly braces. Multiple protocols can be listed, and are separated by comma. If a class has a superclass, list the superclass name before any protocols it adopts, followed by a comma.
+
+```swift
+protocol SomeProtocol {
+    // protocol definition goes here
+}
+//basic protocol definition
+
+struct SomeStructure: FirstProtocol, AnotherProtocol {
+    // structure definition goes here
+}
+//multiple protocol definition
+
+class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
+    // class definition goes here
+}
+//superclass protocol definition
+```
 
 ### Python 
 
@@ -287,11 +293,20 @@ Python variables are compared by value by using the == operator. To compare vari
 	x is y #compares by reference
 ```
 	
-
-
 ## Null/Nil References
 
 ### Swift
+
+As stated before, Swift allows a unique way to handle null/nil references via something called optionals. To access a value that is optional, the programmer must unwrap it with an exclamation mark(!) first. There is also optional chaining to test if something is nil, and only unwrap it if it isn't. This is done with a question mark (?).
+
+```swift
+  let myValue = anOptionalInstance!.someMethod()
+  //the ! operator unwraps anOptionalInstance to expose the instance inside, allowing the method call to be made on it
+  
+  let myValue = anOptionalInstance?.someMethod()
+  //the runtime only calls someMethod if anOptionalInstance is not nil
+ 
+```
 
 ### Python 
 
@@ -300,6 +315,29 @@ Python uses the ‘none’ for null values. None is an instantiated singleton ob
 ## Errors & Exception Handling
 
 ### Swift
+Swift has features that enable throwing, catching, propagating, and manipulating recoverable errors at runtime. Optionals and optional chaining are important features to utilize to find nil values before running it through a method. Errors are represented by values of types that conform to the Error protocol. Enums are often used to make cases for certain types of errors. It's easy to throw an error back, however, there usually needs to be some code written around it to deal with the problem. There are four ways to handle errors in Swift: propagate the error from a function to the code that calls that function, handle the error using a do-catch statement, handle the error as an optional value, or assert that the error will not occur. Swift does have try...catch elements, where if an error is thrown by the code in the do clause, it is matched against the catch clauses to determine which one of them can handle the error.
+
+```swift
+enum VendingMachineError: Error {
+    case invalidSelection
+    case insufficientFunds(coinsNeeded: Int)
+    case outOfStock
+}
+
+throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
+//error is throwing the integer 5 back to the error
+
+do {
+    try buyFavoriteSnack(person: "Alice", vendingMachine: vendingMachine)
+} catch VendingMachineError.invalidSelection {
+    print("Invalid Selection.")
+} catch VendingMachineError.outOfStock {
+    print("Out of Stock.")
+} catch VendingMachineError.insufficientFunds(let coinsNeeded) {
+    print("Insufficient funds. Please insert an additional \(coinsNeeded) coins.")
+}
+//example of a try...catch statement
+```
 
 ### Python 
 
@@ -316,7 +354,13 @@ The try ... except statement has an optional else clause, which, when present, m
 ## Lambda Expressions, Closures, Functions as Types
 
 ### Swift
-
+Closures in Swift are similar to blocks in C and Objective-C and to lambdas in other programming languages. Swift will handle the memory management of closures automatically, storing references of the objects and variables the closure captured. There are three types of closures: global functions that have a name and do not capture any values, nested functions that have a name and can capture values from their enclosing function, and closure expressions that are unnamed and written in a lightweight syntax that can capture values from their surrounding context.
+Closure expression syntax has the following general form:
+```swift
+{ (parameters) -> return type in
+    statements
+}
+```
 ### Python 
 
 Small anonymous functions can be created using the lambda keyword. Lambda functions can be used wherever function objects are required. They are syntactically restricted to a single expression. Lambda functions can reference variables from the containing scope. 
@@ -477,6 +521,8 @@ for i in range(5):
 ## Conclusions
 
 ### Swift
+Swift is very useful language for programmers to learn, especially with its rising popularity since its inception. The technology trend has seen a shift from websites to mobile platforms, something Swift is built for. As a future programmer, it is important to know many languages that operate on different platforms. Swift, when utilized with the easy-to-use interface of XCode, has great features for any size company to use to build powerful iOS applications. With more time, Swift will only grow to be more powerful and useful.
+
 
 ### Python 
 
