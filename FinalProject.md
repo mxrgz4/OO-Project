@@ -134,6 +134,19 @@ let classInstance = Instance()
 
 ### Python 
 
+
+The instantiation operation (“calling” a class object) creates an empty object. Many classes like to create objects with instances customized to a specific initial state. Therefore a class may define a special method named __init__(), like this:
+
+```python
+def __init__(self):
+    self.data = []
+```
+When a class defines an __init__() method, class instantiation automatically invokes __init__() for the newly-created class instance. So in this example, a new, initialized instance can be obtained by:
+
+```python
+x = MyClass()
+```
+
 ## Properties
 
 ### Swift
@@ -693,4 +706,4 @@ Swift is very useful language for programmers to learn, especially with its risi
 
 ### Python 
 
-Python is a high level programming language for general use programming. Python was created by Guido Van Rossum in 1991. Python has a philosophy to emphasize code readability. Python uses white spaces and code blocks rather than keywords and curly braces. Python has many practical uses to it and it is very versitile.
+Python is a high level programming language for general use programming. Python was created by Guido Van Rossum in 1991. Python has a philosophy to emphasize code readability. Python uses white spaces and code blocks rather than keywords and curly braces. Python has many practical uses to it and it is very versitile. Many companies such as Google use python as their main language because it is so versitile. 
