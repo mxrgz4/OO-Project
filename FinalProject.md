@@ -707,3 +707,6 @@ Swift is very useful language for programmers to learn, especially with its risi
 ### Python 
 
 Python is a high level programming language for general use programming. Python was created by Guido Van Rossum in 1991. Python has a philosophy to emphasize code readability. Python uses white spaces and code blocks rather than keywords and curly braces. Python has many practical uses to it and it is very versitile. Many companies such as Google use python as their main language because it is so versitile. 
+
+##
+Overall, the coding practices are rather similar, so transitioning wouldn't be too awful. The biggest difference between Swift and Python are the libraries, one utilizing Apple Cocoa libraries and the other the standard libraries. Swift is a lot closer to Objective-C than Python, and though it is faster, Python still has the metrics over Swift, especially with databases. However, Swift has a lot more freedom in coding, and a compiler that catches quite a few mistakes. Swift is better for front-end programmers, while with Python, it would beat out for back-end programmers.
