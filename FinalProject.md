@@ -404,7 +404,7 @@ Python variables are compared by value by using the == operator. To compare vari
 
 ### Swift
 
-As stated before, Swift allows a unique way to handle null/nil references via something called optionals. To access a value that is optional, the programmer must unwrap it with an exclamation mark(!) first.
+As stated before, Swift allows a unique way to handle nil (not null) references via something called optionals. To access a value that is optional, the programmer must unwrap it with an exclamation mark(!) first.
 
 ```swift
   let myValue = anOptionalInstance!.someMethod()
